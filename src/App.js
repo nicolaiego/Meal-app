@@ -7,6 +7,7 @@ import Recipes from "./components/Recipes";
 import Contact from "./components/Contact";
 import Register from "./components/Register";
 import Welcome from "./components/Welcome";
+import Login from "./components/Login";
 
 import {Routes, Route} from 'react-router-dom'
 
@@ -42,6 +43,7 @@ function App() {
     <>
       <NavBar />
       <Routes>
+      <Route path ='/login' element ={<Login/>} />
        <Route path ='/' element ={<Home/>} />
        <Route path ='/about' element ={<About/>} />
        <Route path ='/register' element ={<Register/>} />

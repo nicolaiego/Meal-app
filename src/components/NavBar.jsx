@@ -26,6 +26,9 @@ const NavBar = () => {
 
       {/* menu */}
       <ul className='hidden md:flex'>
+      <li> 
+          <a href='/login'>Login</a>
+      </li>
         <li> 
           <a href='/'>Home</a>
           </li>
@@ -37,12 +40,13 @@ const NavBar = () => {
         </li>
         <li> 
         <a href='/welcome'>Welcome</a>
-           </li>
+        </li>
         <li> 
         <a href='/recipes'>Recipes</a>
         </li>
         <li> 
-        <a href='/contact'>Contact</a> </li>
+        <a href='/contact'>Contact</a>
+         </li>
       </ul>
 
     
@@ -62,14 +66,15 @@ const NavBar = () => {
 
       {/* t operator, check value of nav */}
       <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-[#0b090a] flex flex-col justify-center items-center'}>
-
+      <li className='py-6 text-4xl'> 
+        <a href ='/login'>Login</a>
+        </li>
         <li className='py-6 text-4xl'> 
         <a href ='/'>Home</a>
         </li>
         <li className='py-6 text-4xl'> 
         <a href ='/about'>About</a>
         </li>
-        
         <li className='py-6 text-4xl'>
         <a href ='/register'>Register</a>
          </li>
