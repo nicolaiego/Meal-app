@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Register from "./components/Register";
 import Welcome from "./components/Welcome";
 import Login from "./components/Login";
+import SavedRecipes from "./components/SavedRecipes";
 
 import {Routes, Route} from 'react-router-dom'
 
@@ -49,6 +50,7 @@ function App() {
        <Route path ='/register' element ={<Register/>} />
        <Route path ='/welcome' element ={<Welcome/>} />
        <Route path ='/recipes' element ={<Recipes/>} />
+       <Route path ='/savedrecipes' element ={<SavedRecipes/>} />
        <Route path ='/contact' element ={<Contact/>} />
       </Routes>
       {/* <Home /> 
