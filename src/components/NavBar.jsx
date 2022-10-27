@@ -48,6 +48,9 @@ const NavBar = () => {
         <a href='/savedrecipes'>Saved Recipes</a>
         </li>
         <li> 
+        <a href='/recipecard'>Recipe</a>
+        </li>
+        <li> 
         <a href='/contact'>Contact</a>
          </li>
       </ul>
@@ -89,6 +92,8 @@ const NavBar = () => {
 
         <li className='py-6 text-4xl'> 
         <a href ='/savedrecipes'>Saved Recipes</a></li> 
+        <li className='py-6 text-4xl'> 
+        <a href ='/recipecard'>Recipe</a></li>
         <li className='py-6 text-4xl'> 
         <a href ='/contact'>Contact</a></li> 
 
