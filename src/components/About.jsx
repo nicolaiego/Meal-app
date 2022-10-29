@@ -70,15 +70,7 @@ const About = () => {
         <div class="flex justify-center"> <button class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-purple-600">
             Search
             </button>
-            </div>
-
-
-
-       
-
-
-
-
+          </div>
 
 
       </div>
