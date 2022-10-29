@@ -33,8 +33,8 @@ const About = () => {
 
       <br />
 
-      <label for="diet" class="block mb-2 text-sm font-medium text-red-400">Dietary Requirement ~ To Select more than one, click Command+Click or CTRL+Click ~</label>
-        <select multiple id="countries_multiple" class="bg-neutral-50 border border-neutral-300 text-gray-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
+      <label for="diet" class="block mb-2 text-sm font-medium text-red-400">Dietary Requirements</label>
+      <select id="diet" class="bg-neutral-50 border border-neutral-300 text-gray-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
             <option selected>Select Type</option>
             <option value="None">None</option>
             <option value="GF">Gluten-Free</option>
@@ -43,7 +43,8 @@ const About = () => {
             <option value="Keto">Ketogenic</option>
             <option value="Paleo">Paleo</option>
             <option value="Pescatarian">Pescatarian</option>
-        </select>
+      </select>
+
 
         <br />
 
