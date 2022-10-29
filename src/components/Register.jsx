@@ -1,6 +1,5 @@
 import registrationresized1 from "../assets/registrationresized1.png";
 import React, { useState } from "react";
-import { useEffect } from "react";
 
 const RegistrationForm = ({ checkIfLoggedIn }) => {
   const [email, setEmail] = useState("");
@@ -9,7 +8,6 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
   const [name, setName] = useState("");
 
   const [loading, setLoading] = useState(false);
-  const [result, setResult] = useState(null);
 
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -17,7 +15,7 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
   const handleNameChange = (e) => setName(e.target.value);
 
   const handleRegister = async () => {
-    console.log("Register clicked", email, password);
+    console.log("Register clicked!", email, password);
 
     if (repeatPassword !== password) {
       alert("Passwords do not match");
@@ -25,10 +23,9 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
     }
 
     if (email && password && name) {
-      // TODO: Validate e-mail and password against rules
       setLoading(true);
 
-      fetch("http://localhost:3300/register", {
+      const response = await fetch("http://localhost:3300/register", {
         headers: { "content-type": "application/json" },
         credentials: "include",
         method: "post",
@@ -37,21 +34,13 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
           password,
           name,
         }),
-      })
-        .then((result) => result.json())
-        .then(setResult);
-    } else {
-      alert("Enter your e-mail, name and password");
-    }
-  };
+      });
 
-  useEffect(() => {
-    setLoading(false);
+      setLoading(false);
 
-    if (result) {
-      const { success } = result;
+      const result = await response.json();
 
-      if (!success) {
+      if (!result.success) {
         alert(
           "Failed to register - are you already registered using this e-mail address?"
         );
@@ -59,8 +48,10 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
 
       checkIfLoggedIn();
       window.location.href = "/";
+    } else {
+      alert("Enter your e-mail, name and password");
     }
-  }, [result]);
+  };
 
   return (
     <div class="relative flex flex-col justify-center min-h-screen overflow-hidden">
@@ -92,6 +83,7 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
             <input
               id="email"
               name="email"
+              disabled={loading}
               type="text"
               class="w-full h-10 text-gray-900 placeholder-transparent rounded border-b-2 border-gray-300 peer focus:outline-none focus:border-orange-500"
               placeholder="john@doe.com"
@@ -110,6 +102,7 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
               id="password"
               name="password"
               type="password"
+              disabled={loading}
               value={password}
               class="w-full h-10 text-gray-900 placeholder-transparent rounded border-b-2 border-gray-300 peer focus:outline-none focus:border-orange-500"
               onChange={handlePasswordChange}
@@ -125,6 +118,7 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
             <input
               id="repeatpassword"
               name="repeatpassword"
+              disabled={loading}
               value={repeatPassword}
               type="password"
               class="w-full h-10 text-gray-900 placeholder-transparent rounded border-b-2 border-gray-300 peer focus:outline-none focus:border-orange-500"
@@ -142,6 +136,7 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
           <div class="mt-6">
             <button
               onClick={handleRegister}
+              disabled={loading}
               class="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-purple-600"
             >
               Register
