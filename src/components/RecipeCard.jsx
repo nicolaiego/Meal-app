@@ -1,42 +1,47 @@
 import React from 'react';
 
-import Meal1 from '../assets/meal1.jpeg';
-import Meal2 from '../assets/meal2.jpeg';
-import Meal3 from '../assets/meal3.jpeg';
-import Meal4 from '../assets/meal4.jpeg';
-import Meal5 from '../assets/meal5.jpeg';
+
+
+import Meal44 from '../assets/meal44.jpg';
+import Meal45 from '../assets/meal45.jpg';
+import Meal46 from '../assets/meal46.jpg';
+import Meal47 from '../assets/meal47.jpg';
+import Meal48 from '../assets/meal48.jpg';
+
+import Meal50 from '../assets/meal50.jpg';
+
+
+
 
 
 const RecipeCard = () => {
   return (
-    <div name='recipecard' className='w-full md:h-screen text-gray-300 bg-[#22333B]'>
+    <div name='recipecard' className='w-full md:h-screen text-gray-300 bg-[#FFFFFF]'>
       <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
         <div className='pb-8'>
-          <p className='text-4xl sm:text-7xl font-bold text-[#84C318]'> Just coped page for now  </p>
-          <p className='py-6'> Need to make a card here </p>
-          <p className='py-1'> (this needs to render in seperate tab not on homepage) </p>
+          <p className='text-4xl sm:text-7xl font-bold text-[#E07A72]'> Recipe Title from API</p>
         </div>
 
 {/* Container */}
-        <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-4'>
+        <div className='grid sm:grid-cols-2 md:grid-cols-1 gap-4'>
 
             {/* Grid Item */}
             <div
-            style={{ backgroundImage: `url(${Meal4})` }}
+            style={{ backgroundImage: `url(${Meal44})` }}
             className='shadow-lg shadow-[#ffffff] group container rounded-md flex justify-center items-center mx-auto content-div'
           >
             {/* Hover Effects */}
             <div className='opacity-0 group-hover:opacity-100'>
               <div className='mx-14 pt-8 text-center'>
                 <a href=''>
-                <button class="text-white group border-2 px-6 py-3 my-2 flex items-center hover:bg-green-600 hover:border-green-600">  Recipe title from API</button>
+                <button class="text-white group border-2 px-6 py-3 my-2 flex items-center rounded-lg hover:bg-red-400 hover:border-red-300">  Recipe title from API</button>
                 </a>
                 <a href='/'>
                 </a>
               </div>
             </div>
           </div>  
-            
+      
 
         </div>
       </div>
