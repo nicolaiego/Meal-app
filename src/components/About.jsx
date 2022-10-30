@@ -6,9 +6,16 @@ import React from 'react';
 
 const About = () => {
   return (
-    <div name='about' className='w-full h-screen bg-[#FFFFFF] text-gray-300'>
+    <div name='savedrecipes' className='w-full md:h-screen text-gray-300 bg-[#FFFFFF]'>
+    <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
+   <br/> 
+      <br />
+      <br/> 
+      <h2 className='text-4xl sm:text-7xl font-bold text-[#E07A72]'>
+        What recipes are you looking for?
+      </h2>
       {/* Container */}
-      <div  className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
+   
 
       <label for="budget" class="block mb-2 text-sm font-medium text-red-400">Select Budget</label>
       <select id="budget" class="bg-neutral-50 border border-neutral-300 text-gray-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
@@ -78,6 +85,7 @@ const About = () => {
 
 
     </div>
+   
   );
 };
 
