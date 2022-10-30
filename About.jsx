@@ -1,29 +1,65 @@
 
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Recipes from './Recipes';
 
 
 
 
 const About = () => {
 
+    const navigate = useNavigate()
+
     const [searchAPI, setSearchAPI] = useState("");
 
     const [formData, setFormData] = useState(
         {
             diet: "", 
-            intolerances: "", 
+            intolerances: [], 
             persons: "", 
             budget: ""
         }
     );
-    // console.log(formData)
+
+    const [recipes, setRecipes] = useState([])
+
+    // const [makeCall, setMakeCall] = useState(false)
+  
+    // useEffect(() => {
+    
+        // const getRecipes = (api) => {fetch(api, {
+        //     headers: { "content-type": "application/json" },
+        //     credentials: "include",
+        //     method: "get", 
+        //     }).then((result) => result.json())
+        //     .then((result) => {setRecipes(result);
+        //     console.log(result);
+        //     console.log(recipes);});
+        //     {<Recipes recipeData={recipes} />}
+        //     navigate("/recipes");
+        //     };
+        // getRecipes(searchAPI)}, [searchAPI]);
+
+    const getRecipes = api => {fetch(api, {
+        headers: { "content-type": "application/json" },
+        credentials: "include",
+        method: "get", 
+        }).then(result => result.json())
+        .then(data => data ? setRecipes(data) : console.log("No API call"));
+        // console.log(data);
+        console.log(recipes);
+        // not sure the code below is valid as per passing props to component like this
+        {<Recipes recipeData={recipes} />};
+        recipes && navigate("/recipes");
+        };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
-        setSearchAPI(`http://localhost:3300/search_recipe?diet=${formData.diet}&intolerances=&${formData.intolerances}&persons=${formData.persons}&budget=${formData.budget}`);
+        setSearchAPI(`http://localhost:3300/search_recipe?diet=${formData.diet}&intolerances=${formData.intolerances}&persons=${formData.persons}&budget=${formData.budget}`);
+        // console.log(formData);
         console.log(searchAPI);
+        getRecipes(searchAPI)     
     }
 
     const handleChange = (e) => {
@@ -32,12 +68,14 @@ const About = () => {
                 ...prevFormData,
                 [e.target.name]: e.target.value
             }
-        });
+        })};
+
+
     return (
             <div name='about' className='w-full h-screen bg-[#FFFFFF] text-gray-300'>
             {/* Container */}
             <div  className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
-                <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
             <label for="budget" className="block mb-2 text-sm font-medium text-red-400">Select Budget</label>
             <select id="budget" name="budget" value={formData.budget} onChange={handleChange} className="bg-neutral-50 border border-neutral-300 text-gray-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
             <option value="">Select your budget</option>
@@ -75,8 +113,8 @@ const About = () => {
                 <br />
 
                 <label for="allergies" className="block mb-2 text-sm font-medium text-red-400">Allergies ~ To Select more than one, click Command+Click or CTRL+Click ~</label>
-                <select multiple id="countries_multiple" name="intolerances" value={formData.budget} onChange={handleChange} className="bg-neutral-50 border border-neutral-300 text-gray-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
-                    <option value="">None</option>
+                <select multiple id="countries_multiple" name="intolerances" value={formData.intolerances} onChange={handleChange} className="bg-neutral-50 border border-neutral-300 text-gray-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
+                    <option value={[]}>None</option>
                     <option value="Egg">Egg</option>
                     <option value="Gluten">Gluten</option>
                     <option value="Grain">Grain</option>
@@ -99,6 +137,6 @@ const About = () => {
                 </div>    
         );
         };
-        }
+        
 
 export default About;
