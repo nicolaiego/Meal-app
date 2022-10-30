@@ -8,6 +8,7 @@ import Meal47 from '../assets/meal47.jpg';
 import Meal48 from '../assets/meal48.jpg';
 
 import Meal50 from '../assets/meal50.jpg';
+import RemoveSaved from './RemoveSaved';
 
 
 
@@ -34,12 +35,15 @@ const SavedRecipes = () => {
               <div className='mx-14 pt-8 text-center'>
                 <a href=''>
                 <button class="text-white group border-2 px-6 py-3 my-2 flex items-center rounded-lg hover:bg-red-400 hover:border-red-300">  Recipe title from API</button>
-                </a>
+                <RemoveSaved/> </a>
                 <a href='/'>
                 </a>
               </div>
             </div>
           </div>  
+
+
+
             {/* Grid Item */}
             <div
             style={{ backgroundImage: `url(${Meal50})` }}
@@ -50,7 +54,7 @@ const SavedRecipes = () => {
               <div className='mx-14 pt-8 text-center'>
                 <a href=''>
                 <button class="text-white group border-2 px-6 py-3 my-2 flex items-center rounded-lg hover:bg-red-400 hover:border-red-300">  Recipe title from API</button>
-                </a>
+                <RemoveSaved/></a>
                 <a href='/'>
                 </a>
               </div>
@@ -67,7 +71,7 @@ const SavedRecipes = () => {
               <div className='mx-14 pt-8 text-center'>
                 <a href=''>
                 <button class="text-white group border-2 px-6 py-3 my-2 flex items-center rounded-lg hover:bg-red-400 hover:border-red-300">  Recipe title from API</button>
-                </a>
+                <RemoveSaved/></a>
                 <a href='/'>
                 </a>
               </div>
@@ -84,7 +88,7 @@ const SavedRecipes = () => {
               <div className='mx-14 pt-8 text-center'>
                 <a href=''>
                 <button class="text-white group border-2 px-6 py-3 my-2 flex items-center rounded-lg hover:bg-red-400 hover:border-red-300">  Recipe title from API</button>
-                </a>
+                <RemoveSaved/></a>
                 <a href='/'>
                 </a>
               </div>
@@ -101,7 +105,7 @@ const SavedRecipes = () => {
               <div className='mx-14 pt-8 text-center'>
                 <a href=''>
                 <button class="text-white group border-2 px-6 py-3 my-2 flex items-center rounded-lg hover:bg-red-400 hover:border-red-300">  Recipe title from API</button>
-                </a>
+                <RemoveSaved/></a>
                 <a href='/'>
                 </a>
               </div>
@@ -118,7 +122,7 @@ const SavedRecipes = () => {
               <div className='mx-14 pt-8 text-center'>
                 <a href=''>
                 <button class="text-white group border-2 px-6 py-3 my-2 flex items-center rounded-lg hover:bg-red-400 hover:border-red-300">  Recipe title from API</button>
-                </a>
+                <RemoveSaved/></a>
                 <a href='/'>
                 </a>
               </div>
