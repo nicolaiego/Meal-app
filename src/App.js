@@ -11,7 +11,7 @@ import Login from "./components/Login";
 import SavedRecipes from "./components/SavedRecipes";
 import RecipeCard from "./components/RecipeCard";
 
-import {Routes, Route} from 'react-router-dom'
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [userInfo, setUserInfo] = useState(null);
@@ -24,11 +24,7 @@ function App() {
       credentials: "include",
     })
       .then((result) => result.json())
-      .then((result) => {
-        if (result.loggedIn !== userInfo?.loggedIn) {
-          setUserInfo(result);
-        }
-      });
+      .then(setUserInfo);
   };
 
   const signOut = () => {
@@ -38,34 +34,30 @@ function App() {
     }).then(() => setUserInfo(null));
   };
 
-  checkIfLoggedIn();
-  useEffect(() => setInterval(checkIfLoggedIn, 5000), []);
+  useEffect(() => {
+    checkIfLoggedIn();
+  }, []);
 
   return (
     <>
-      <NavBar />
+      <NavBar userInfo={userInfo} signOut={signOut} />
       <Routes>
-      <Route path ='/login' element ={<Login/>} />
-       <Route path ='/' element ={<Home/>} />
-       <Route path ='/about' element ={<About/>} />
-       <Route path ='/register' element ={<Register/>} />
-       <Route path ='/welcome' element ={<Welcome/>} />
-       <Route path ='/recipes' element ={<Recipes/>} />
-       <Route path ='/savedrecipes' element ={<SavedRecipes/>} />
-       <Route path ='/recipecard' element ={<RecipeCard/>} />
-       <Route path ='/contact' element ={<Contact/>} />
+        <Route
+          path="/login"
+          element={<Login checkIfLoggedIn={checkIfLoggedIn} />}
+        />
+        <Route path="/" element={<Home userInfo={userInfo} />} />
+        <Route path="/about" element={<About />} />
+        <Route
+          path="/register"
+          element={<Register checkIfLoggedIn={checkIfLoggedIn} />}
+        />
+        <Route path="/welcome" element={<Welcome />} />
+        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/savedrecipes" element={<SavedRecipes />} />
+        <Route path="/recipecard" element={<RecipeCard />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
-      {/* <Home /> 
-      <About />
-      {userInfo?.loggedIn ? (
-        <Welcome name={userInfo?.name} signOut={signOut} />
-      ) : (
-        <Register checkIfLoggedIn={checkIfLoggedIn} />
-      )}
-      <Welcome />
-      <Recipes />
-      <Contact /> */}
-
     </>
   );
 }

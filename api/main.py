@@ -7,7 +7,6 @@ from ext_api import find_recipe_api, get_recipe_info_api
 from datetime import timedelta
 
 
-
 app = Flask(__name__)
 app.secret_key = 'SUPER_SECRET_SESSION_KEY'
 app.permanent_session_lifetime = timedelta(hours=3)
@@ -31,7 +30,6 @@ def status_page():
 # app route to register
 @app.route('/register', methods=['POST'])
 def register_user():
-    
     user_input = request.json
     email = user_input['email']
     password = user_input['password']
@@ -41,10 +39,28 @@ def register_user():
     register_status = register_user_db(email, password, name)
     if register_status["success"]:
         session['email'] = email
+        session['name'] = name
 
     return register_status
 
+# get info about logged in user
+
+
+@app.route('/user/me')
+def get_logged_in_user_info():
+    if session.get('email'):
+        return {
+            'isLoggedIn': True,
+            'name': session.get('name')
+        }
+    else:
+        return {
+            'isLoggedIn': False
+        }
+
 # app route to log in
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -57,6 +73,7 @@ def login():
             password_db = user_data_db[1]
             if check_password_hash(password_db, password):
                 session['email'] = email
+                session['name'] = user_name
                 session.permanent = True
                 return {
                     'loggedIn': True,
@@ -66,10 +83,10 @@ def login():
                 # redirect(url_for('dashboard'))
             else:
                 return {
-                'loggedIn': False,
-                'message': 'Invalid password'
-            }
-        else:    
+                    'loggedIn': False,
+                    'message': 'Invalid password'
+                }
+        else:
             return {
                 'loggedIn': False,
                 'message': 'Username does not exist. Do you need to register?'
@@ -79,10 +96,10 @@ def login():
     else:
         if 'email' in session:
             pass
-             # redirect(url_for('dashboard'))
+            # redirect(url_for('dashboard'))
         else:
             pass
-             # redirect(url_for('login'))
+            # redirect(url_for('login'))
 
 
 # app route to user dashboard
@@ -93,7 +110,6 @@ def dashboard():
     else:
         return "You need to login"      # use alert?
         # redirect(url_for('login'))
-       
 
 
 # app route to search recipe
@@ -105,8 +121,8 @@ def search_recipe():
     type = request.args.get('meal_type', None)
     budget = request.args.get('budget', None)
     persons = request.args.get('persons', '1')
-    result = find_recipe_api(cuisine=cuisine, diet=diet, intolerances=intolerances, 
-                            type=type, budget=budget, persons=persons)
+    result = find_recipe_api(cuisine=cuisine, diet=diet, intolerances=intolerances,
+                             type=type, budget=budget, persons=persons)
     return result
 
 
@@ -120,8 +136,6 @@ def get_recipe_details(recipe_id):
     else:
         return "You need to login"      # use alert?
         # redirect(url_for('login'))
-        
-    
 
 
 # app route for saving recipe (only for logged in users)
@@ -134,7 +148,6 @@ def save_recipe(recipe_id):
     else:
         return "You need to login"      # use alert?
         # redirect(url_for('login'))
-       
 
 
 # app route for deleting recipe (only for logged in users)
@@ -147,8 +160,6 @@ def delete_recipe(recipe_id):
     else:
         return "You need to login"      # use alert?
         # redirect(url_for('login'))
-       
-
 
 
 # app route to sign out (only for logged in users)
@@ -162,7 +173,7 @@ def sign_out():
         return "You are not logged in"
         # redirect(url_for('login'))
 
+
 app.run(port=3300, debug=True)
 
 close_db()
-
