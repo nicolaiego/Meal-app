@@ -18,9 +18,12 @@ const SavedRecipes = () => {
   return (
     <div name='savedrecipes' className='w-full md:h-screen text-gray-300 bg-[#FFFFFF]'>
       <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
-        <div className='pb-8'>
-          <p className='text-4xl sm:text-7xl font-bold text-[#E07A72]'> Your Recipes </p>
-        </div>
+     <br/> 
+        <br />
+        <br/> 
+        <h2 className='text-4xl sm:text-7xl font-bold text-[#E07A72]'>
+          Saved Recipes
+        </h2>
 
 {/* Container */}
         <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-4'>
