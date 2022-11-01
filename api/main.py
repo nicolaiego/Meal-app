@@ -134,31 +134,45 @@ def get_recipe_details(recipe_id):
         result = get_recipe_info_api(recipe_id)
         return result
     else:
-        return "You need to login"      # use alert?
+        return {"message": "You need to login"}     # use alert?
         # redirect(url_for('login'))
 
 
 # app route for saving recipe (only for logged in users)
-@app.route('/user/save_recipe/<recipe_id>')
-def save_recipe(recipe_id):
+@app.route('/user/save_recipe/<string:recipe_id>/<path:recipe_image>')
+def save_recipe(recipe_id, recipe_image):
     if 'email' in session:
         email = session['email']
-        result = save_recipes_db(email, recipe_id)
+        result = save_recipes_db(email, recipe_id, recipe_image)
         return result
     else:
-        return "You need to login"      # use alert?
+        return {"message": "You need to login"}       
+        # redirect(url_for('login'))
+
+
+# NEW
+# app route for viewing saved recipes (only for logged in users)
+@app.route('/user/saved_recipes')
+def saved_recipes():
+    if 'email' in session:
+        email = session['email']
+        result = saved_recipes_db(email)
+        return result
+    else:
+        return {"message": "You need to login"}       
         # redirect(url_for('login'))
 
 
 # app route for deleting recipe (only for logged in users)
-@app.route('/user/delete_recipe/<recipe_id>')
-def delete_recipe(recipe_id):
+# still need to add recipe_image to Flask app code
+@app.route('/user/delete_recipe/<string:recipe_id>/<path:recipe_image>')
+def delete_recipe(recipe_id, recipe_image):
     if 'email' in session:
         email = session['email']
-        result = delete_recipes_db(email, recipe_id)
+        result = delete_recipes_db(email, recipe_id, recipe_image)
         return result
     else:
-        return "You need to login"      # use alert?
+        return {"message": "You need to login"}      # use alert?
         # redirect(url_for('login'))
 
 
@@ -170,7 +184,7 @@ def sign_out():
         return {'success': True}
         # redirect(url_for('login'))
     else:
-        return "You are not logged in"
+        return {"message": "You need to login"} 
         # redirect(url_for('login'))
 
 
