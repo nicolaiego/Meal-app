@@ -156,8 +156,9 @@ def save_recipe(recipe_id, recipe_image):
 def saved_recipes():
     if 'email' in session:
         email = session['email']
-        result = saved_recipes_db(email)
-        return result
+        (ids, images) = saved_recipes_db(email)
+        json =  b'{"ids": ' + ids + b', "images": ' + images + b'}'
+        return json
     else:
         return {"message": "You need to login"}       
         # redirect(url_for('login'))
