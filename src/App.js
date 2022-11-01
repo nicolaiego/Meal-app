@@ -86,7 +86,7 @@ function App() {
         />
         <Route path="/welcome" element={<Welcome />} />
         <Route path ='/recipes' element ={<Recipes recipeData={recipes}/>} />
-        <Route path="/savedrecipes" element={<SavedRecipes />} />
+        <Route path="/savedrecipes" element={<SavedRecipes userInfo={userInfo} />} />
         <Route path="/recipecard" element={<RecipeCard />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>

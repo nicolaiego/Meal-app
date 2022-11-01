@@ -105,14 +105,14 @@ def save_recipes_db(user_email, recipe_id, recipe_image):
 def saved_recipes_db(user_email):
     use_db()
     query = """
-    SELECT recipe_image FROM saved_recipes 
+    SELECT recipe_ids, recipe_image
+    FROM saved_recipes 
     WHERE user_email = '{}'
     """.format(user_email)
     cursor.execute(query)
-    result = cursor.fetchall()
-    print(result)
+    (ids, images) = cursor.fetchone()
     # result will be a list/array of all the saved recipe image url
-    return result
+    return (ids, images)
 
 
 # ADJUSTED
@@ -123,7 +123,7 @@ def delete_recipes_db(user_email, recipe_id, recipe_image):
     SET recipe_ids = JSON_REMOVE(
     recipe_ids, replace(JSON_SEARCH(recipe_ids, 'all', '{}'), '"', '')),
     recipe_image = JSON_REMOVE(
-    recipe_image, replace(JSON_SEARCH(recipe_image, 'all', '{}'), '"', '')),
+    recipe_image, replace(JSON_SEARCH(recipe_image, 'all', '{}'), '"', ''))
     WHERE user_email = '{}'
     AND JSON_SEARCH(recipe_ids, 'all', '{}') IS NOT NULL""".format(recipe_id, recipe_image,  user_email, recipe_id)
 
