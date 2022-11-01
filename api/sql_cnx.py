@@ -52,6 +52,7 @@ def create_table_saved_recipe():
         CREATE TABLE IF NOT EXISTS saved_recipes (
         user_email VARCHAR(255) NOT NULL UNIQUE,
         recipe_ids JSON NOT NULL,
+        recipe_image JSON NOT NULL,
         FOREIGN KEY (user_email) REFERENCES users(email))
     """
     cursor.execute(saved_recipe_table_query)
@@ -83,30 +84,48 @@ def get_login_user_db(email):
     return result
 
 
-def save_recipes_db(user_email, recipe_id):
+def save_recipes_db(user_email, recipe_id, recipe_image):
     use_db()
     query = """
-    INSERT INTO saved_recipes (user_email, recipe_ids) VALUES ('{}','{}')
+    INSERT INTO saved_recipes (user_email, recipe_ids, recipe_image) VALUES 
+    ('{}','{}', '"{}"')
     ON DUPLICATE KEY 
-    UPDATE recipe_ids = JSON_ARRAY_APPEND(recipe_ids,'$', '{}')
-    """.format(user_email, recipe_id, recipe_id)
+    UPDATE recipe_ids = JSON_ARRAY_APPEND(recipe_ids,'$', '{}'),
+    recipe_image = JSON_ARRAY_APPEND(recipe_image,'$', '{}')
+    """.format(user_email, recipe_id, recipe_image, recipe_id, recipe_image)
     try:
         cursor.execute(query)
         cnx.commit()
-        return {'success': True}    
+        return {'success': True, "message": "Recipe added to saved recipes."}    
     except Exception as err:
         return {'success': False, 
-        "Error message":f"Recipe not saved, error: {err}" }
+         "message":f"Recipe not saved, error: {err}" }
+
+# NEW
+def saved_recipes_db(user_email):
+    use_db()
+    query = """
+    SELECT recipe_image FROM saved_recipes 
+    WHERE user_email = '{}'
+    """.format(user_email)
+    cursor.execute(query)
+    result = cursor.fetchall()
+    print(result)
+    # result will be a list/array of all the saved recipe image url
+    return result
 
 
-def delete_recipes_db(user_email, recipe_id):
+# ADJUSTED
+def delete_recipes_db(user_email, recipe_id, recipe_image):
     use_db()
     query = """
     UPDATE saved_recipes
     SET recipe_ids = JSON_REMOVE(
-    recipe_ids, replace(JSON_SEARCH(recipe_ids, 'all', '{}'), '"', ''))
+    recipe_ids, replace(JSON_SEARCH(recipe_ids, 'all', '{}'), '"', '')),
+    recipe_image = JSON_REMOVE(
+    recipe_image, replace(JSON_SEARCH(recipe_image, 'all', '{}'), '"', '')),
     WHERE user_email = '{}'
-    AND JSON_SEARCH(recipe_ids, 'all', '{}') IS NOT NULL""".format(recipe_id, user_email, recipe_id)
+    AND JSON_SEARCH(recipe_ids, 'all', '{}') IS NOT NULL""".format(recipe_id, recipe_image,  user_email, recipe_id)
 
     try:
         cursor.execute(query)
@@ -115,7 +134,6 @@ def delete_recipes_db(user_email, recipe_id):
     except Exception as err:
         return {'success': False, 
         "Error message":f"Recipe not deleted, error: {err}" }
-
 
 
 def close_db():
