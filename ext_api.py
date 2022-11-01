@@ -112,8 +112,16 @@ def get_recipe_info_api(recipe_id):
     return recipe_info
     
     
+import json
+
+variable = [('[716627, "716426", "649248", "656752", "646512", "1095693", "716427", "782600", "716426", "798400"]', '["https://spoonacular.com/recipeImages/716627-312x231.jpg", "https://spoonacular.com/recipeImages/716426-312x231.jpg", "https://spoonacular.com/recipeImages/649248-312x231.jpg", "https://spoonacular.com/recipeImages/656752-312x231.jpg", "https://spoonacular.com/recipeImages/646512-312x231.jpg", "https://spoonacular.com/recipeImages/1095693-312x231.jpg", "https://spoonacular.com/recipeImages/716427-312x231.jpg", "https://spoonacular.com/recipeImages/782600-312x231.jpg", "https://spoonacular.com/recipeImages/716426-312x231.jpg", "https://spoonacular.com/recipeImages/798400-312x231.jpg"]')]
+
+my_dict = {}
+print(type(variable[0][0]))
+print(type(json.loads(variable[0][0])))
+print(json.loads(variable[0][0]))
+my_dict["ids"] = b'variable[0][0]'
+my_dict["images"] = b'variable[0][1]'
 
 
-
-
-
+print(my_dict)

@@ -22,10 +22,10 @@ const SavedRecipes = ({userInfo}) => {
      });
   };
 
-  const removeSavedRecipe = (recipeId, recipeImage) => {
-    console.log('trying to remove recipe', recipeId, recipeImage);
+  const removeSavedRecipe = (recipeId, recipeImage, recipeName) => {
+    console.log('trying to remove recipe', recipeId, recipeImage, recipeName);
 
-    fetch('http://localhost:3300/user/delete_recipe/' + recipeId + '/' + recipeImage,
+    fetch('http://localhost:3300/user/delete_recipe/' + recipeId + '/' + recipeImage + '/' + recipeName,
     {
       credentials: 'include'
     })
@@ -60,6 +60,8 @@ const SavedRecipes = ({userInfo}) => {
   // back from the API
 
   const recipeImage = savedRecipesData.images[index];
+  const recipeName = savedRecipesData.name[index];
+
 
   return (
           <div
@@ -70,9 +72,9 @@ const SavedRecipes = ({userInfo}) => {
             <div className='opacity-0 group-hover:opacity-100'>
               <div className='mx-14 pt-8 text-center'>
                 <button class="text-white group border-2 px-6 py-3 my-2 flex items-center rounded-lg hover:bg-red-400 hover:border-red-300">
-                  Recipe title from API
+                  {recipeName}
                 </button>
-                <RemoveSaved onClick={() => removeSavedRecipe(recipeId, recipeImage)} />
+                <RemoveSaved onClick={() => removeSavedRecipe(recipeId, recipeImage, recipeName)} />
               </div>
             </div>
           </div>  

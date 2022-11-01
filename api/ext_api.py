@@ -5,6 +5,7 @@ import os
 
 
 
+
 API_KEY = "INSERT OWN API KEY"
 SEARCH_RECIPE_URL = "https://api.spoonacular.com/recipes/complexSearch"
 NUMBER_OF_RETURNS = 10

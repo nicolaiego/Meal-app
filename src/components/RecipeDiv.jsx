@@ -6,9 +6,7 @@ const RecipeDiv = (props) => {
  
     const getRecipeID = (e) => {
         e.preventDefault();
-        let api = `http://localhost:3300/user/save_recipe/${props.id}/${props.image}`
-        console.log(props.id);
-        console.log(props.image);
+        let api = `http://localhost:3300/user/save_recipe/${props.id}/${props.image}/${props.name}`
         console.log(api);
         fetch(api, {
         headers: { "content-type": "application/json" },
