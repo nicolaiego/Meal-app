@@ -2,9 +2,13 @@ import requests
 import json
 import os
 
+
+
+
+
 API_KEY = "INSERT OWN API KEY"
 SEARCH_RECIPE_URL = "https://api.spoonacular.com/recipes/complexSearch"
-NUMBER_OF_RETURNS = 50
+NUMBER_OF_RETURNS = 10
 
 
 
@@ -16,7 +20,7 @@ def sort_recipe(recipe):
 def get_recipe_array(result, budget, persons):
     recipe_array = []
     for item in result:
-        recipe_price = item["pricePerServing"] * persons
+        recipe_price = (item["pricePerServing"] * persons)/100
         if recipe_price <= budget:
             recipe_title = item["title"]
             recipe_id = item["id"]

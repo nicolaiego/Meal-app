@@ -1,47 +1,87 @@
 import React from 'react';
 
-import Meal1 from '../assets/meal1.jpeg';
-import Meal2 from '../assets/meal2.jpeg';
-import Meal3 from '../assets/meal3.jpeg';
-import Meal4 from '../assets/meal4.jpeg';
-import Meal5 from '../assets/meal5.jpeg';
+
+import AddSaved from './AddSaved';
+import Meal44 from '../assets/meal44.jpg';
+
+
+
+
 
 
 const RecipeCard = () => {
   return (
-    <div name='recipecard' className='w-full md:h-screen text-gray-300 bg-[#22333B]'>
+      <div name='savedrecipes' className='w-full md:h-screen text-gray-300 bg-[#FFFFFF]'>
       <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
-        <div className='pb-8'>
-          <p className='text-4xl sm:text-7xl font-bold text-[#84C318]'> Just coped page for now  </p>
-          <p className='py-6'> Need to make a card here </p>
-          <p className='py-1'> (this needs to render in seperate tab not on homepage) </p>
-        </div>
-
-{/* Container */}
-        <div className='grid sm:grid-cols-2 md:grid-cols-3 gap-4'>
-
-            {/* Grid Item */}
-            <div
-            style={{ backgroundImage: `url(${Meal4})` }}
-            className='shadow-lg shadow-[#ffffff] group container rounded-md flex justify-center items-center mx-auto content-div'
-          >
-            {/* Hover Effects */}
-            <div className='opacity-0 group-hover:opacity-100'>
-              <div className='mx-14 pt-8 text-center'>
-                <a href=''>
-                <button class="text-white group border-2 px-6 py-3 my-2 flex items-center hover:bg-green-600 hover:border-green-600">  Recipe title from API</button>
-                </a>
-                <a href='/'>
-                </a>
-              </div>
+     <br/> 
+        <br />
+        <br/> 
+       
+        <div class="flex justify-end"> <button class="  text-white font-bold  px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-purple-600">
+          Back to search
+              </button>
             </div>
-          </div>  
+             <br /> 
+           
+        <div
+            style={{ backgroundImage: `url(${Meal44})` }}
+            className='shadow-lg shadow-[#ffffff] group container rounded-md flex justify-center items-center mx-auto content-div'
+          >  <h2 className='text-4xl sm:text-7xl font-bold text-[#FFFFFF]'>
+          Title of recipe
+        </h2></div>
+        {/* Container */}
+     
+  
+        <h2 class=" text-pink-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
+         <h3 class= "text-pink-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5"> summary here - example  - Cook a delicious gluten-free dinner in 20 minutes. Our Scandi-style salmon is served with beetroot, lentils, pumpkin seeds, capers, mustard and dill</h3>
+         <br /> 
+
+      
+         <p>Prep time: </p> 
+         <br/> 
+         <p>Cook time: </p> 
+         <br />
+         <p>Servings: </p> 
+         <br />
+      
+
+        </h2>
+  
+    
+
+        <h2 class=" text-pink-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
+         <p> </p> 
+         <br/> 
+         <p>Ingredients: </p> 
+         <br />
+         <p>Method: </p> 
+         <br />
+         
+        </h2>
+
+        <br />
+  
+      
+  
+          <br />
+  
+          <div class="flex justify-center"> <button class=" px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-purple-600">
+          <AddSaved />
+              </button>
+            </div>
+             <br /> 
+           
             
-
+  
+  
         </div>
+  
+  
+  
       </div>
-    </div>
-  );
-};
-
+     
+    );
+  };
+  
+  
 export default RecipeCard;
