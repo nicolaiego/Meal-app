@@ -72,6 +72,7 @@ const NavBar = (props) => {
 
       {/* hamburger menu */}
 
+
       <div onClick={handleClick} className="fixed bottom-4 right-4 rounded-full px- py6 md:hidden z-50">
       
       <button class="w-14 h-14 relative text-white focus:outline-none bg-[#E07A72] rounded">
@@ -79,6 +80,7 @@ const NavBar = (props) => {
         <span>Menu</span>
 
         </button>
+
       </div>
 
 
@@ -89,6 +91,7 @@ const NavBar = (props) => {
         className={
           !nav
             ? "hidden"
+
             : "absolute top-0 left-0 w-full h-screen bg-[#E07A72] flex flex-col justify-center items-center"
         }
       >
@@ -109,6 +112,7 @@ const NavBar = (props) => {
           <a href="/savedrecipes">Saved Recipes</a>
         </li>
         <li className="py-6 text-white text-2xl">
+
           <a href="/contact">Contact</a>
         </li>
       </ul>

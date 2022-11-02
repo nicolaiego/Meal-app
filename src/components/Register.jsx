@@ -97,7 +97,9 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
               &nbsp;&nbsp;Email address
             </label>
           </div>
+
           <div class="relative mb-8">
+
             <input
               id="password"
               name="password"
@@ -105,6 +107,7 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
               disabled={loading}
               value={password}
               class="w-full h-10 text-gray-900 placeholder-transparent rounded border-b-2 border-gray-300 peer focus:outline-none focus:border-orange-500"
+
               placeholder="password"
               onChange={handlePasswordChange}
             />
@@ -116,6 +119,7 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
             </label>
           </div>
 
+
           <div class="relative mb-4">
             <input
               id="repeatpassword"
@@ -124,7 +128,9 @@ const RegistrationForm = ({ checkIfLoggedIn }) => {
               value={repeatPassword}
               type="password"
               class="w-full h-10 text-gray-900 placeholder-transparent rounded border-b-2 border-gray-300 peer focus:outline-none focus:border-orange-500"
+
               placeholder="password"
+
               onChange={handleRepeatPasswordChange}
             />
             <label
