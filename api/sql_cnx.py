@@ -1,5 +1,6 @@
 import mysql.connector
 import os
+import json
 
 
 MYSQL_USER = "INSERT USER"
@@ -53,6 +54,7 @@ def create_table_saved_recipe():
         user_email VARCHAR(255) NOT NULL UNIQUE,
         recipe_ids JSON NOT NULL,
         recipe_image JSON NOT NULL,
+        recipe_name JSON NOT NULL,
         FOREIGN KEY (user_email) REFERENCES users(email))
     """
     cursor.execute(saved_recipe_table_query)
@@ -84,15 +86,16 @@ def get_login_user_db(email):
     return result
 
 
-def save_recipes_db(user_email, recipe_id, recipe_image):
+def save_recipes_db(user_email, recipe_id, recipe_image, recipe_name):
     use_db()
     query = """
-    INSERT INTO saved_recipes (user_email, recipe_ids, recipe_image) VALUES 
-    ('{}','{}', '"{}"')
+    INSERT INTO saved_recipes (user_email, recipe_ids, recipe_image, recipe_name) VALUES 
+    ('{}','{}', '"{}"', '"{}"')
     ON DUPLICATE KEY 
     UPDATE recipe_ids = JSON_ARRAY_APPEND(recipe_ids,'$', '{}'),
-    recipe_image = JSON_ARRAY_APPEND(recipe_image,'$', '{}')
-    """.format(user_email, recipe_id, recipe_image, recipe_id, recipe_image)
+    recipe_image = JSON_ARRAY_APPEND(recipe_image,'$', '{}'),
+    recipe_name = JSON_ARRAY_APPEND(recipe_name,'$', '{}')
+    """.format(user_email, recipe_id, recipe_image, recipe_name, recipe_id, recipe_image, recipe_name)
     try:
         cursor.execute(query)
         cnx.commit()
@@ -105,27 +108,35 @@ def save_recipes_db(user_email, recipe_id, recipe_image):
 def saved_recipes_db(user_email):
     use_db()
     query = """
-    SELECT recipe_ids, recipe_image
+    SELECT recipe_ids, recipe_image, recipe_name
     FROM saved_recipes 
     WHERE user_email = '{}'
     """.format(user_email)
     cursor.execute(query)
-    (ids, images) = cursor.fetchone()
-    # result will be a list/array of all the saved recipe image url
-    return (ids, images)
+    result = cursor.fetchall()
+    recipe_dict = {}
+    recipe_dict["ids"] = json.loads(result[0][0])
+    recipe_dict["images"] = json.loads(result[0][1])
+    recipe_dict["name"] = json.loads(result[0][2])
+
+    # (ids, images) = cursor.fetchone()
+    # return (ids, images)
+    return recipe_dict
 
 
 # ADJUSTED
-def delete_recipes_db(user_email, recipe_id, recipe_image):
+def delete_recipes_db(user_email, recipe_id, recipe_image, recipe_name):
     use_db()
     query = """
     UPDATE saved_recipes
     SET recipe_ids = JSON_REMOVE(
     recipe_ids, replace(JSON_SEARCH(recipe_ids, 'all', '{}'), '"', '')),
     recipe_image = JSON_REMOVE(
-    recipe_image, replace(JSON_SEARCH(recipe_image, 'all', '{}'), '"', ''))
+    recipe_image, replace(JSON_SEARCH(recipe_image, 'all', '{}'), '"', '')),
+    recipe_name = JSON_REMOVE(
+    recipe_name, replace(JSON_SEARCH(recipe_name, 'all', '{}'), '"', ''))
     WHERE user_email = '{}'
-    AND JSON_SEARCH(recipe_ids, 'all', '{}') IS NOT NULL""".format(recipe_id, recipe_image,  user_email, recipe_id)
+    AND JSON_SEARCH(recipe_ids, 'all', '{}') IS NOT NULL""".format(recipe_id, recipe_image, recipe_name, user_email, recipe_id)
 
     try:
         cursor.execute(query)
