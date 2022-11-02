@@ -77,7 +77,6 @@ const NavBar = (props) => {
       <button class="w-14 h-14 relative text-white focus:outline-none bg-[#E07A72] rounded">
 
         <span>Menu</span>
-      {!nav ? <FaBars /> : <FaTimes />}
         </button>
       </div>
 

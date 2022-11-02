@@ -31,7 +31,6 @@ class="w-full p-6 m-auto bg-white rounded-md shadow-md border-top lg:max-w-md">
                     <label for="message" class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Your message</label>
                     <textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-orange-500 focus:border-orange-500" placeholder="Your message..."></textarea>
                     
-
                     
                     <div class="mt-6">
                         <button
