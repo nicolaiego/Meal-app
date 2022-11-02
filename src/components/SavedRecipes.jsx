@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect, useState, useContext } from 'react';
 import RemoveSaved from './RemoveSaved';
-
+import RecipeContext from "../RecipeContext";
+import { useNavigate } from "react-router-dom";
 
 
 const SavedRecipes = ({userInfo}) => {
@@ -42,6 +42,22 @@ const SavedRecipes = ({userInfo}) => {
 
   const savedRecipeIds = savedRecipesData ? savedRecipesData.ids : [];
 
+  const { getRecipeInfo } = useContext(RecipeContext);
+
+  const { recipeInfoAPI } = useContext(RecipeContext);
+
+  const { getRecipeDetails } = useContext(RecipeContext);
+  const navigate = useNavigate();
+
+  const getInfo = async (recipeId, recipeImage, recipeName) => {
+    await getRecipeInfo(recipeId, recipeImage, recipeName);
+    await getRecipeDetails(recipeInfoAPI);
+    navigate('/recipecard');
+ 
+  }
+
+ 
+
   return (
     <div name='savedrecipes' className='w-full md:h-screen text-gray-300 bg-[#FFFFFF]'>
       <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
@@ -71,7 +87,8 @@ const SavedRecipes = ({userInfo}) => {
             {/* Hover Effects */}
             <div className='opacity-0 group-hover:opacity-100'>
               <div className='mx-14 pt-8 text-center'>
-                <button class="text-white group border-2 px-6 py-3 my-2 flex items-center rounded-lg hover:bg-red-400 hover:border-red-300">
+                <button onClick={() => getInfo(recipeId, recipeImage, recipeName)}
+                className="text-white group border-2 px-6 py-3 my-2 flex items-center rounded-lg hover:bg-red-400 hover:border-red-300">
                   {recipeName}
                 </button>
                 <RemoveSaved onClick={() => removeSavedRecipe(recipeId, recipeImage, recipeName)} />
