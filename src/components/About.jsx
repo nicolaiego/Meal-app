@@ -1,10 +1,43 @@
 
 
-import React from 'react';
-
+import React, { useState, useContext } from 'react';
+import SearchContext from '../SearchContext';
 
 
 const About = () => {
+
+
+  const { getSearchAPI } = useContext(SearchContext);
+
+
+  const [formData, setFormData] = useState(
+      {
+          diet: "", 
+          intolerances: [], 
+          persons: "", 
+          budget: ""
+      }
+  );
+
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(formData);
+      getSearchAPI(formData);
+  }
+
+  const handleChange = (e) => {
+      setFormData(prevFormData => {
+          return {
+              ...prevFormData,
+              [e.target.name]: e.target.value
+          }
+
+      })};
+
+
+
+
   return (
     <div name='about' className='w-full h-screen bg-[#FFFFFF] text-gray-300'>
       {/* Container */}
@@ -78,6 +111,7 @@ const About = () => {
 
 
     </div>
+   
   );
 };
 
