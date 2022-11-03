@@ -39,7 +39,7 @@ const Home = (props) => {
         <br/>
         <h2 className='text-4xl sm:text-7xl font-bold text-[#E07A72]'>
 
-         The planner that helps you be a Frugal Chef. Create heathy meals without worrying about the money.
+         The planner that helps you be a frugal chef. Create heathy meals without worrying about the money.
         </h2>
         </div>
         

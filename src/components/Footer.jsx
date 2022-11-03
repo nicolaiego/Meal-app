@@ -32,7 +32,7 @@ const Footer = () => {
             </h2>
             <h2 className='text-4lg sm:text-7lg text-center font-sm text-[#8892b0]'>
               <br />
-            © Lowenna Baggaley, Natalie Fiddian, Nicole Regondi, Onyinye Onyekwelu, Pitnaree Krachangwong ❤
+            © Lowenna Baggaley, Natalie Fiddian, Nicole Regondi, Onyinye Onyekwelu, Pitnaree Krachangwong
 
             </h2>
     
