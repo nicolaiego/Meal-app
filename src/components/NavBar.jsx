@@ -52,9 +52,7 @@ const NavBar = (props) => {
         {/* <li>
           <a href="/welcome">Welcome</a>
         </li> */}
-        <li>
-          <a href="/recipes">Recipes</a>
-        </li>
+       
         <li>
           <a href="/savedrecipes">Saved Recipes</a>
         </li>
@@ -100,9 +98,7 @@ const NavBar = (props) => {
         <li className="py-6 text-white text-2xl">
           <a href="/login">Login</a>
         </li>
-        <li className="py-6 text-white text-2xl">
-          <a href="/recipes">Recipes</a>
-        </li>
+        
 
         <li className="py-6 text-white text-2xl">
           <a href="/savedrecipes">Saved Recipes</a>
