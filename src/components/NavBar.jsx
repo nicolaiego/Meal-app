@@ -42,7 +42,7 @@ const NavBar = (props) => {
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/about">About</a>
+          <a href="/search">Search</a>
         </li>
         {!isLoggedIn && (
           <li>
@@ -93,7 +93,7 @@ const NavBar = (props) => {
           <a href="/">Home</a>
         </li>
         <li className="py-6 text-white text-2xl">
-          <a href="/about">About</a>
+          <a href="/search">Search</a>
         </li>
         <li className="py-6 text-white text-2xl">
           <a href="/login">Login</a>

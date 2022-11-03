@@ -4,7 +4,7 @@ import React, { useState, useContext } from 'react';
 import SearchContext from '../SearchContext';
 
 
-const About = () => {
+const Search = () => {
 
 
   const { getSearchAPI } = useContext(SearchContext);
@@ -118,4 +118,4 @@ const About = () => {
 };
 
 
-export default About;
+export default Search;

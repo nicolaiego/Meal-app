@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
-import About from "./components/About";
+import Search from "./components/Search";
 import Recipes from "./components/Recipes";
 import Contact from "./components/Contact";
 import Register from "./components/Register";
@@ -84,7 +84,7 @@ function App() {
           element={<Login checkIfLoggedIn={checkIfLoggedIn} />}
         />
         <Route path="/" element={<Home userInfo={userInfo} />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/search" element={<Search />} />
         <Route
           path="/register"
           element={<Register checkIfLoggedIn={checkIfLoggedIn} />}
