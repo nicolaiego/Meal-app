@@ -37,6 +37,8 @@ const SavedRecipes = ({userInfo}) => {
   useEffect(() => {
     if(userInfo && userInfo.isLoggedIn) {
       getSavedRecipesData();
+    } else {
+      setSavedRecipesData(null);
     }
   }, [userInfo]);
 
