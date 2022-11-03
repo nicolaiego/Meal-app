@@ -10,6 +10,7 @@ const Footer = () => {
           {/* Container */}
           <div className='max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-5/6'>
             <h2 className='text-4lg sm:text-7lg font-bold text-[#8892b0]'>
+
                 <br/>
               <div class="flex flex-wrap justify-center gap-2">
                 <button class="bg-blue-500 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded">
@@ -32,6 +33,7 @@ const Footer = () => {
             <h2 className='text-4lg sm:text-7lg text-center font-sm text-[#8892b0]'>
               <br />
             © Lowenna Baggaley, Natalie Fiddian, Nicole Regondi, Onyinye Onyekwelu, Pitnaree Krachangwong 
+
             </h2>
     
           </div>

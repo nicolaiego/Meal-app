@@ -3,7 +3,6 @@ import RecipeDiv from './RecipeDiv';
 
 
 const Recipes = (props) => {
-  console.log(props.recipeData)
 
 
   function createRecipe(recipe) {
@@ -50,4 +49,3 @@ export default Recipes;
          
 
 
-;

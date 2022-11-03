@@ -16,7 +16,9 @@ const Home = (props) => {
         
       }}
       name="home"
+      
       className="w-half h-screen bg-white bg-cover"
+
     >
    
     
@@ -28,6 +30,7 @@ const Home = (props) => {
         )}
 
         {/* Container */}
+
       <div className='max-w-[1000px] mx-auto px-8 flex flex-col bg-zinc-50 bg-opacity-80 justify-center h-full'>
         <h2 className='text-4xl sm:text-7xl font-bold text-red-400'>
          Frugal Chef
@@ -35,6 +38,7 @@ const Home = (props) => {
         <br/>
         <br/>
         <h2 className='text-4xl sm:text-7xl font-bold text-[#E07A72]'>
+
          The planner that helps you be a frugal chef. Create heathy meals without worrying about the money.
         </h2>
         </div>
@@ -43,6 +47,7 @@ const Home = (props) => {
         
         <div name='home' className='w-half h-screen bg-[#E07A72] '>
       <div className='max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full'>
+
         <br/>
       <h2 className='text-4xl sm:text-2lg font-bold italic text-[white]'>
         " You choose healthy and delicious recipes to suit your budget and taste"
@@ -55,6 +60,7 @@ const Home = (props) => {
           "This website couldn't have come at a better time"
         </h2>
         <p className='text-red-200 py-4 max-w-[700px]'>
+
           The Guardian 
         </p>
       
@@ -70,6 +76,7 @@ const Home = (props) => {
 
         </div> 
         
+
       </div>
        <Footer/> 
       </div>

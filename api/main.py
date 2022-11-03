@@ -43,9 +43,8 @@ def register_user():
 
     return register_status
 
+
 # get info about logged in user
-
-
 @app.route('/user/me')
 def get_logged_in_user_info():
     if session.get('email'):
@@ -58,9 +57,8 @@ def get_logged_in_user_info():
             'isLoggedIn': False
         }
 
+
 # app route to log in
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -134,7 +132,7 @@ def get_recipe_details(recipe_id):
         result = get_recipe_info_api(recipe_id)
         return result
     else:
-        return {"message": "You need to login"}     # use alert?
+        return {"message": "You need to login"}     
         # redirect(url_for('login'))
 
 
@@ -150,15 +148,12 @@ def save_recipe(recipe_id, recipe_image, recipe_name):
         # redirect(url_for('login'))
 
 
-# NEW
 # app route for viewing saved recipes (only for logged in users)
 @app.route('/user/saved_recipes')
 def saved_recipes():
     if 'email' in session:
         email = session['email']
         result = saved_recipes_db(email)
-        # (ids, images) = saved_recipes_db(email)
-        # json =  b'{"ids": ' + ids + b', "images": ' + images + b'}'
         return result
     else:
         return {"message": "You need to login"}       
@@ -166,7 +161,6 @@ def saved_recipes():
 
 
 # app route for deleting recipe (only for logged in users)
-# still need to add recipe_image to Flask app code
 @app.route('/user/delete_recipe/<string:recipe_id>/<path:recipe_image>/<string:recipe_name>')
 def delete_recipe(recipe_id, recipe_image, recipe_name):
     if 'email' in session:
@@ -174,7 +168,7 @@ def delete_recipe(recipe_id, recipe_image, recipe_name):
         result = delete_recipes_db(email, recipe_id, recipe_image, recipe_name)
         return result
     else:
-        return {"message": "You need to login"}      # use alert?
+        return {"message": "You need to login"}      
         # redirect(url_for('login'))
 
 
