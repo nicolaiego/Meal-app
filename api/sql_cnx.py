@@ -8,6 +8,7 @@ MYSQL_PASSWORD = "INSERT PASSWORD"
 
 
 
+
 if not MYSQL_USER or not MYSQL_PASSWORD:
     raise Exception("Need to provide MYSQL_USER and MYSQL_PASSWORD environment variables")
 
@@ -104,7 +105,6 @@ def save_recipes_db(user_email, recipe_id, recipe_image, recipe_name):
         return {'success': False, 
          "message":f"Recipe not saved, error: {err}" }
 
-# NEW
 def saved_recipes_db(user_email):
     use_db()
     query = """
@@ -119,12 +119,9 @@ def saved_recipes_db(user_email):
     recipe_dict["images"] = json.loads(result[0][1])
     recipe_dict["name"] = json.loads(result[0][2])
 
-    # (ids, images) = cursor.fetchone()
-    # return (ids, images)
     return recipe_dict
 
 
-# ADJUSTED
 def delete_recipes_db(user_email, recipe_id, recipe_image, recipe_name):
     use_db()
     query = """

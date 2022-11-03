@@ -1,8 +1,7 @@
-import React from 'react';
-
+import React, { useContext } from 'react';
+import RecipeContext from '../RecipeContext';
 
 import AddSaved from './AddSaved';
-import Meal44 from '../assets/meal44.jpg';
 
 
 
@@ -10,6 +9,29 @@ import Meal44 from '../assets/meal44.jpg';
 
 
 const RecipeCard = () => {
+
+  const { recipeInfo } = useContext(RecipeContext);
+  const { recipeInfoImage } = useContext(RecipeContext);
+  const { recipeInfoID } = useContext(RecipeContext);
+  const { recipeInfoName } = useContext(RecipeContext);
+
+  const getRecipeID = (e) => {
+    e.preventDefault();
+    let api = `http://localhost:3300/user/save_recipe/${recipeInfoID}/${recipeInfoImage}/${recipeInfoName}`
+    console.log(api);
+    fetch(api, {
+    headers: { "content-type": "application/json" },
+    credentials: "include",
+  })
+    .then((result) => result.json())
+    .then((result) => {
+      console.log(result.message)
+      alert(result.message)
+    }
+    );
+};
+
+
   return (
       <div name='savedrecipes' className='w-full md:h-screen text-gray-300 bg-[#FFFFFF]'>
       <div className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
@@ -24,59 +46,39 @@ const RecipeCard = () => {
              <br /> 
            
         <div
-            style={{ backgroundImage: `url(${Meal44})` }}
+            style={{ backgroundImage: `url(${recipeInfoImage})` }}
             className='shadow-lg shadow-[#ffffff] group container rounded-md flex justify-center items-center mx-auto content-div'
           >  <h2 className='text-4xl sm:text-7xl font-bold text-[#FFFFFF]'>
-          Title of recipe
+          {recipeInfoName}
         </h2></div>
-        {/* Container */}
-     
-  
-        <h2 class=" text-pink-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
-         <h3 class= "text-pink-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5"> summary here - example  - Cook a delicious gluten-free dinner in 20 minutes. Our Scandi-style salmon is served with beetroot, lentils, pumpkin seeds, capers, mustard and dill</h3>
-         <br /> 
-
-      
-         <p>Prep time: </p> 
-         <br/> 
-         <p>Cook time: </p> 
-         <br />
-         <p>Servings: </p> 
-         <br />
-      
-
-        </h2>
-  
-    
 
         <h2 class=" text-pink-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
          <p> </p> 
          <br/> 
-         <p>Ingredients: </p> 
+         <p>Ingredients: </p><br />  
+         {recipeInfo.ingredients.map((ingredient, index) =>
+            <li key={index}>
+              {ingredient}
+             </li>
+)}
          <br />
-         <p>Method: </p> 
+         <p>Method: <br /><br />  {recipeInfo.instructions}</p> 
          <br />
          
         </h2>
 
         <br />
   
-      
-  
           <br />
   
           <div class="flex justify-center"> <button class=" px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-purple-600">
-          <AddSaved />
+          <span onClick={getRecipeID}><AddSaved /></span>
               </button>
             </div>
              <br /> 
-           
-            
-  
   
         </div>
-  
-  
+
   
       </div>
      
