@@ -44,11 +44,11 @@ const NavBar = (props) => {
         <li>
           <a href="/search">Search</a>
         </li>
-        {!isLoggedIn && (
+        {/* {!isLoggedIn && (
           <li>
             <a href="/register">Register</a>
           </li>
-        )}
+        )} */}
         {/* <li>
           <a href="/welcome">Welcome</a>
         </li> */}
@@ -56,9 +56,9 @@ const NavBar = (props) => {
         <li>
           <a href="/savedrecipes">Saved Recipes</a>
         </li>
-        <li>
+        {/* <li>
           <a href="/recipecard">Recipe</a>
-        </li>
+        </li> */}
         <li>
           <a href="/contact">Contact</a>
         </li>
