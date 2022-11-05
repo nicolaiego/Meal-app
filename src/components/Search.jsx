@@ -1,5 +1,7 @@
 
+
 import bannersearch from "../assets/bannersearch.png";
+
 import React, { useState, useContext } from 'react';
 import SearchContext from '../SearchContext';
 
@@ -41,6 +43,7 @@ const Search = () => {
   return (
     <div name='about' className='w-full h-screen bg-[#FFFFFF] text-gray-300'>
       {/* Container */}
+
       <br/>
       <br/>
       <br/>
@@ -52,6 +55,7 @@ const Search = () => {
           >
          </div>
      
+
       <form onSubmit={handleSubmit}>
 
 <label for="budget" className="block mb-2 text-sm font-medium text-red-400">Select Budget</label>
