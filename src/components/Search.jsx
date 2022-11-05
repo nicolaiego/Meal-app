@@ -1,5 +1,7 @@
 
 
+import bannersearch from "../assets/bannersearch.png";
+
 import React, { useState, useContext } from 'react';
 import SearchContext from '../SearchContext';
 
@@ -41,7 +43,18 @@ const Search = () => {
   return (
     <div name='about' className='w-full h-screen bg-[#FFFFFF] text-gray-300'>
       {/* Container */}
-      <div  className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
+
+      <br/>
+      <br/>
+      <br/>
+      <div  className='max-w-[800px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
+      <div
+            style={{ backgroundImage: `url(${bannersearch})`}}
+
+            className='shadow-lg shadow-[#ffffff] group container rounded-md flex justify-center items-center mx-auto content-div'
+          >
+         </div>
+     
 
       <form onSubmit={handleSubmit}>
 
