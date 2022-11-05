@@ -8,7 +8,6 @@ MYSQL_PASSWORD = "INSERT PASSWORD"
 
 
 
-
 if not MYSQL_USER or not MYSQL_PASSWORD:
     raise Exception("Need to provide MYSQL_USER and MYSQL_PASSWORD environment variables")
 
@@ -74,8 +73,10 @@ def register_user_db(email, password, name):
         return {'success': True}
     except Exception as err:
         
+        # return {'success': False, 
+        # "Error message":f"User registration failed, error: {err}" }
         return {'success': False, 
-        "Error message":f"User registration failed, error: {err}" }
+        "Error message":"User registration failed" }
 
 
 
@@ -91,11 +92,11 @@ def save_recipes_db(user_email, recipe_id, recipe_image, recipe_name):
     use_db()
     query = """
     INSERT INTO saved_recipes (user_email, recipe_ids, recipe_image, recipe_name) VALUES 
-    ('{}','{}', '"{}"', '"{}"')
+    ('{}','["{}"]', '"{}"', '"{}"')
     ON DUPLICATE KEY 
-    UPDATE recipe_ids = JSON_ARRAY_APPEND(recipe_ids,'$', '{}'),
-    recipe_image = JSON_ARRAY_APPEND(recipe_image,'$', '{}'),
-    recipe_name = JSON_ARRAY_APPEND(recipe_name,'$', '{}')
+    UPDATE recipe_ids = JSON_ARRAY_APPEND(recipe_ids,'$', '"{}"'),
+    recipe_image = JSON_ARRAY_APPEND(recipe_image,'$', '"{}"'),
+    recipe_name = JSON_ARRAY_APPEND(recipe_name,'$', '"{}"')
     """.format(user_email, recipe_id, recipe_image, recipe_name, recipe_id, recipe_image, recipe_name)
     try:
         cursor.execute(query)
@@ -127,13 +128,13 @@ def delete_recipes_db(user_email, recipe_id, recipe_image, recipe_name):
     query = """
     UPDATE saved_recipes
     SET recipe_ids = JSON_REMOVE(
-    recipe_ids, replace(JSON_SEARCH(recipe_ids, 'all', '{}'), '"', '')),
+    recipe_ids, replace(JSON_SEARCH(recipe_ids, 'one', '{}'), '"', '')),
     recipe_image = JSON_REMOVE(
-    recipe_image, replace(JSON_SEARCH(recipe_image, 'all', '{}'), '"', '')),
+    recipe_image, replace(JSON_SEARCH(recipe_image, 'one', '{}'), '"', '')),
     recipe_name = JSON_REMOVE(
-    recipe_name, replace(JSON_SEARCH(recipe_name, 'all', '{}'), '"', ''))
+    recipe_name, replace(JSON_SEARCH(recipe_name, 'one', '{}'), '"', ''))
     WHERE user_email = '{}'
-    AND JSON_SEARCH(recipe_ids, 'all', '{}') IS NOT NULL""".format(recipe_id, recipe_image, recipe_name, user_email, recipe_id)
+    AND JSON_SEARCH(recipe_ids, 'one', '{}') IS NOT NULL""".format(recipe_id, recipe_image, recipe_name, user_email, recipe_id)
 
     try:
         cursor.execute(query)

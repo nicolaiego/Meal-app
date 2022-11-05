@@ -5,9 +5,10 @@ import os
 
 
 
+
 API_KEY = "INSERT OWN API KEY"
 SEARCH_RECIPE_URL = "https://api.spoonacular.com/recipes/complexSearch"
-NUMBER_OF_RETURNS = 10
+NUMBER_OF_RETURNS = 50
 
 
 
@@ -116,6 +117,39 @@ def get_recipe_info_api(recipe_id):
     
 
 
+
+# ## TESTING
+
+def search_recipe2():
+    result = find_recipe_api2()
+    return result
+
+
+def find_recipe_api2():
+    choice = {"persons": "1"}
+    persons = int(choice.pop('persons'))
+    choice["number"] = 2
+    choice["addRecipeInformation"] = "true"
+    choice_str = ""
+    for item in choice.items():
+        if item[1] and item[0] != "budget":
+            choice_str += f"&{item[0]}={item[1]}"
+
+    params = f"apiKey={API_KEY}{choice_str}"
+    query = f"{SEARCH_RECIPE_URL}?{params}"
+    response = requests.get(query)
+    if response.status_code == 200:
+        response = response.json()
+        result = response["results"]
+        # budget = int(choice["budget"]) if choice.get("budget") else 9999999
+        # recipe_array = get_recipe_array(result, budget, persons) 
+        # result = json.dumps(recipe_array)
+        if result:
+            return result
+        else:
+            return "Sorry, we did not find any recipe within that budget"
+    else:
+        return {"Error. Status code: ": response.status_code}
 
 
 

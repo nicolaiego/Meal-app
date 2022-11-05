@@ -42,34 +42,32 @@ const NavBar = (props) => {
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/about">About</a>
+          <a href="/search">Search</a>
         </li>
-        {!isLoggedIn && (
+        {/* {!isLoggedIn && (
           <li>
             <a href="/register">Register</a>
           </li>
-        )}
+        )} */}
         {/* <li>
           <a href="/welcome">Welcome</a>
         </li> */}
-        <li>
-          <a href="/recipes">Recipes</a>
-        </li>
+       
         <li>
           <a href="/savedrecipes">Saved Recipes</a>
         </li>
-        <li>
+        {/* <li>
           <a href="/recipecard">Recipe</a>
-        </li>
+        </li> */}
         <li>
           <a href="/contact">Contact</a>
         </li>
       </ul>
-
+      <a href="/register">
       <button class="bg-[#E07A72] hover:bg-orange-500 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         Sign-up
       </button>
-
+      </a> 
       {/* hamburger menu */}
 
       <div onClick={handleClick} className="fixed bottom-4 right-4 rounded-full px- py6 md:hidden z-50">
@@ -95,14 +93,12 @@ const NavBar = (props) => {
           <a href="/">Home</a>
         </li>
         <li className="py-6 text-white text-2xl">
-          <a href="/about">About</a>
+          <a href="/search">Search</a>
         </li>
         <li className="py-6 text-white text-2xl">
           <a href="/login">Login</a>
         </li>
-        <li className="py-6 text-white text-2xl">
-          <a href="/recipes">Recipes</a>
-        </li>
+        
 
         <li className="py-6 text-white text-2xl">
           <a href="/savedrecipes">Saved Recipes</a>

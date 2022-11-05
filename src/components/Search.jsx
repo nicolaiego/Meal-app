@@ -1,10 +1,10 @@
 
-
+import bannersearch from "../assets/bannersearch.png";
 import React, { useState, useContext } from 'react';
 import SearchContext from '../SearchContext';
 
 
-const About = () => {
+const Search = () => {
 
 
   const { getSearchAPI } = useContext(SearchContext);
@@ -15,7 +15,7 @@ const About = () => {
           diet: "", 
           intolerances: [], 
           persons: "1", 
-          budget: "100000"
+          budget: "999999"
       }
   );
 
@@ -41,13 +41,22 @@ const About = () => {
   return (
     <div name='about' className='w-full h-screen bg-[#FFFFFF] text-gray-300'>
       {/* Container */}
-      <div  className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
+      <br/>
+      <br/>
+      <br/>
+      <div  className='max-w-[800px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
+      <div
+            style={{ backgroundImage: `url(${bannersearch})`}}
 
+            className='shadow-lg shadow-[#ffffff] group container rounded-md flex justify-center items-center mx-auto content-div'
+          >
+         </div>
+     
       <form onSubmit={handleSubmit}>
 
 <label for="budget" className="block mb-2 text-sm font-medium text-red-400">Select Budget</label>
 <select id="budget" name="budget" value={formData.budget} onChange={handleChange} className="bg-neutral-50 border border-neutral-300 text-gray-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
-<option value="100000">Select Budget</option>
+<option value="999999">Select Budget</option>
  <option value="2000">$20</option>
 <option value="5000">$50</option>
 <option value="10000">$100</option>
@@ -58,7 +67,7 @@ const About = () => {
 
 <label for="people" className="block mb-2 text-sm font-medium text-red-400">Select Number of People</label>
 <select id="people" name="persons" value={formData.persons} onChange={handleChange} className="bg-neutral-50 border border-neutral-300 text-gray-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
-<option value="1">Select Number</option>
+{/* <option value="1">Select Number</option> */}
  <option value="1">1</option>
  <option value="2">2</option>
  <option value="3">3</option>
@@ -118,4 +127,4 @@ const About = () => {
 };
 
 
-export default About;
+export default Search;

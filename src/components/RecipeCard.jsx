@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import RecipeContext from '../RecipeContext';
+import { Link } from "react-router-dom"
 
 import AddSaved from './AddSaved';
 
@@ -39,9 +40,9 @@ const RecipeCard = () => {
         <br />
         <br/> 
        
-        <div class="flex justify-end"> <button class="  text-white font-bold  px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-purple-600">
+        <div class="flex justify-end"> <Link to="/search"><button class="  text-white font-bold  px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-purple-600">
           Back to search
-              </button>
+              </button></Link>
             </div>
              <br /> 
            
