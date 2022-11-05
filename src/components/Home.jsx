@@ -24,24 +24,38 @@ const Home = (props) => {
     
 
         {props.userInfo && props.userInfo.isLoggedIn && (
-          <div className="max-w-[1000px] ml-40 px-9 flex justify-center flex-col h-full">
-            <h1 className="drop-shadow-[0_0_2px_rgba(255,255,255,1)] text-4xl font-barlow font-normal text-[#864540]">Hello {props.userInfo.name}</h1>
-          </div>
-        )}
-
-        {/* Container */}
-
-      <div className='max-w-[1000px] mx-auto px-8 flex flex-col bg-zinc-50 bg-opacity-80 justify-center h-full'>
+            <div className='max-w-[1000px] mx-auto px-8 flex flex-col bg-zinc-50 bg-opacity-80 justify-center h-full'>
+            <h1 className="drop-shadow-[0_0_2px_rgba(255,255,255,1)] text-4xl sm:text-7xl font-bold text-[#E07A72]">Hello {props.userInfo.name}</h1>
+            
         <h2 className='text-4xl sm:text-7xl font-bold text-red-400'>
-         Frugal Chef
+         Welcome to Frugal Chef
         </h2>
         <br/>
         <br/>
         <h2 className='text-4xl sm:text-7xl font-bold text-[#E07A72]'>
 
-         The planner that helps you be a frugal chef. <br/> Create heathy meals without worrying about the money.
+         
+        
+         Thrifty recipes to help you keep cooking costs down. Try our budget-friendly recipes.</h2>
+        </div>
+
+        )}
+
+<div className='max-w-[1000px] mx-auto px-8 flex flex-col bg-zinc-50 bg-opacity-80 justify-center h-full'>        
+        <h2 className='text-4xl sm:text-7xl font-bold text-red-400'>
+        Frugal Chef
+        </h2>
+        <br/>
+        <br/>
+        <h2 className='text-4xl sm:text-7xl font-bold text-[#E07A72]'>
+
+        The planner that helps you be a frugal chef. <br/> Create heathy meals without worrying about the money.
         </h2>
         </div>
+
+        {/* Container */}
+
+      
         
         <div name='home' className='w-half h-screen bg-[#E07A72] '>
       <div className='max-w-[1000px] mx-auto px-8 flex flex-col justify-center h-full'>
@@ -84,5 +98,4 @@ const Home = (props) => {
 };
 
 export default Home;
-
 
