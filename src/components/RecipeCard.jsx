@@ -40,7 +40,7 @@ const RecipeCard = () => {
         <br />
         <br/> 
        
-        <div class="flex justify-end"> <Link to="/search"><button class="  text-white font-bold  px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-orange-500">
+        <div class="flex justify-end"> <Link to="/search"><button class="  text-white font-bold  px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-orange-700" >
           Back to search
               </button></Link>
             </div>

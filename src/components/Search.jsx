@@ -45,8 +45,8 @@ const Search = () => {
         <br/>
       </div>
       <div  className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
-      <br />
-      <br />
+      <br/>
+      <br/>
       <div
             style={{ backgroundImage: `url(${bannersearch})`}}
 
@@ -95,10 +95,10 @@ const Search = () => {
 
   <br />
 
-  <label for="allergies" class="block mb-2 text-sm font-medium text-red-400">Allergies ~ To Select more than one, click Command+Click or CTRL+Click ~</label>
+  <label for="allergies" class="block mb-2 text-sm font-medium text-red-400">Allergies ~ To Select more than one, click Command+Click or CTRL+Click ~ </label>
   <select multiple id="countries_multiple" name="intolerances" value={formData.intolerances} onChange={handleChange}  className="bg-neutral-50 border border-neutral-300 text-gray-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
   <option value={[]}>None</option>
-  <option value="Egg">Egg</option>
+  <option value="Egg">Egg </option>
   <option value="Gluten">Gluten</option>
   <option value="Grain">Grain</option>
   <option value="Seafood">Seafood</option>
@@ -113,7 +113,7 @@ const Search = () => {
 
   <br />
 
-  <div className="flex justify-center"> <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-purple-600">
+  <div className="flex justify-center"> <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-orange-700">
       Search
       </button>
     </div>
