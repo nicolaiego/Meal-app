@@ -34,9 +34,9 @@ const Home = (props) => {
         <br/>
         <h2 className='text-4xl sm:text-7xl font-bold text-[#E07A72]'>
 
+         Thrifty recipes to help you keep cooking costs down.</h2>
+         <br/> 
          
-        
-         Thrifty recipes to help you keep cooking costs down. Try our budget-friendly recipes.</h2>
         </div>
 
         )}
