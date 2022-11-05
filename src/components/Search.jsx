@@ -1,7 +1,5 @@
 
-
 import bannersearch from "../assets/bannersearch.png";
-
 import React, { useState, useContext } from 'react';
 import SearchContext from '../SearchContext';
 
@@ -43,20 +41,22 @@ const Search = () => {
   return (
     <div name='about' className='w-full h-screen bg-[#FFFFFF] text-gray-300'>
       {/* Container */}
-
+      <div>
+        <br/>
+      </div>
+      <div  className='max-w-[1000px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
       <br/>
       <br/>
-      <br/>
-      <div  className='max-w-[800px] mx-auto p-4 flex flex-col justify-center w-full h-full'>
       <div
             style={{ backgroundImage: `url(${bannersearch})`}}
 
-            className='shadow-lg shadow-[#ffffff] group container rounded-md flex justify-center items-center mx-auto content-div'
+            className='shadow-lg shadow-[#ffffff] group container p-4 flex rounded-md flex justify-center items-center mx-auto content-div'
           >
-         </div>
-     
+        </div>
 
       <form onSubmit={handleSubmit}>
+      <br />
+
 
 <label for="budget" className="block mb-2 text-sm font-medium text-red-400">Select Budget</label>
 <select id="budget" name="budget" value={formData.budget} onChange={handleChange} className="bg-neutral-50 border border-neutral-300 text-gray-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
@@ -95,10 +95,10 @@ const Search = () => {
 
   <br />
 
-  <label for="allergies" class="block mb-2 text-sm font-medium text-red-400">Allergies ~ To Select more than one, click Command+Click or CTRL+Click ~</label>
+  <label for="allergies" class="block mb-2 text-sm font-medium text-red-400">Allergies ~ To Select more than one, click Command+Click or CTRL+Click ~ </label>
   <select multiple id="countries_multiple" name="intolerances" value={formData.intolerances} onChange={handleChange}  className="bg-neutral-50 border border-neutral-300 text-gray-400 text-sm rounded-lg focus:ring-red-300 focus:border-red-400 block w-full p-2.5">
   <option value={[]}>None</option>
-  <option value="Egg">Egg</option>
+  <option value="Egg">Egg </option>
   <option value="Gluten">Gluten</option>
   <option value="Grain">Grain</option>
   <option value="Seafood">Seafood</option>
@@ -113,7 +113,7 @@ const Search = () => {
 
   <br />
 
-  <div className="flex justify-center"> <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-purple-600">
+  <div className="flex justify-center"> <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-[#C6480C] rounded-md hover:bg-orange-500 focus:outline-none focus:bg-orange-700">
       Search
       </button>
     </div>
